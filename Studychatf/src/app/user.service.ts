@@ -40,6 +40,12 @@ constructor(private http: HttpClient) { }
   login(credentials: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/login`, credentials);
   }
+  onLoginSuccess(response: any) {
+    this.currentUser = (response.data);
+    console.log('onLoginSuccess called with:', response);
+    // this.setCurrentUser(response.user);
+    // this.currentUser = response.user;
+  }
 
   getUserDetails(userId: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${userId}`);
@@ -57,12 +63,5 @@ constructor(private http: HttpClient) { }
     this['currentUserData'] = user;
     this.currentUser = user;
     // console.log('setCurrentUser called with:', user);
-  }
-
-  onLoginSuccess(response: any) {
-    this.currentUser = response.data
-    // console.log('onLoginSuccess called with:', response);
-    this.setCurrentUser(response.user);
-    this.currentUser = response.user;
   }
 }
