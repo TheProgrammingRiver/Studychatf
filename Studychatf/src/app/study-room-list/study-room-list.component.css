@@ -1,0 +1,9 @@
+.rooms-list {
+    list-style-type: none;
+  }
+  
+  .rooms-list li {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+  }
