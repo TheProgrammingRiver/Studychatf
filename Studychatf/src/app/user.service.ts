@@ -17,19 +17,19 @@ export class UserService {
 
 constructor(private http: HttpClient) { }
 
-  setCurrentUser(user: any) {
-    this['currentUserData'] = user;
-    this.currentUser = user;
-  }
+  // setCurrentUser(user: any) {
+  //   this['currentUserData'] = user;
+  //   this.currentUser = user;
+  // }
 
   getCurrentUser() {
     return this.currentUser;
   }
 
-  onLoginSuccess(response: any) {
-    this.setCurrentUser(response.user);
-    this.currentUser = response.user;
-  }
+  // onLoginSuccess(response: any) {
+  //   this.setCurrentUser(response.user);
+  //   this.currentUser = response.user;
+  // }
   
 
 
@@ -51,5 +51,18 @@ constructor(private http: HttpClient) { }
 
   listRoomsForUser(userId: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${userId}/rooms`);
+  }
+
+  setCurrentUser(user: any) {
+    this['currentUserData'] = user;
+    this.currentUser = user;
+    // console.log('setCurrentUser called with:', user);
+  }
+
+  onLoginSuccess(response: any) {
+    this.currentUser = response.data
+    // console.log('onLoginSuccess called with:', response);
+    this.setCurrentUser(response.user);
+    this.currentUser = response.user;
   }
 }

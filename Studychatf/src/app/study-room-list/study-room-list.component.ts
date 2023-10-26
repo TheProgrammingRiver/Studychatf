@@ -19,21 +19,24 @@ export class StudyRoomListComponent implements OnInit {
   };
 
   rooms: StudyRoom[] = [];
-errorMessage: any;
-studyRooms: any;
+  errorMessage: any;
+  studyRooms: any;
+  successMessage: any;
+  router: any;
 
 
   constructor(
     private studyRoomService: StudyRoomService,
     private userService: UserService
     ) {
-      this.currentUser = this.userService['getCurrentUser']();
+      this.currentUser = this.userService.getCurrentUser();
      }
 
-  ngOnInit() {
-    console.log("Current User:", this.currentUser);
-    this.listAllRooms();
-  }
+     ngOnInit() {
+      this.currentUser = this.userService.getCurrentUser();
+      console.log(this.currentUser);
+      this.listAllRooms();
+    }
 
   listAllRooms() {
     this.studyRoomService.listAllRooms().subscribe(
@@ -63,8 +66,7 @@ studyRooms: any;
 joinRoom(roomId: number) {
     
     const currentUser = this.userService.getCurrentUser();
-
-    
+    console.log(currentUser);
     if (!currentUser || !currentUser.username) {
         console.error('User information is not available');
         return;
@@ -79,4 +81,5 @@ joinRoom(roomId: number) {
         }
     );
 }
+
 }

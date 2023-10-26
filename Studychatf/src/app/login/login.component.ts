@@ -24,7 +24,9 @@ user: any;
   login() {
     this.userService.login(this.credentials).subscribe(
       (response: any) => {
+        this.userService.setCurrentUser(response.user);
         console.log('Login successful', response);
+        console.log(response);
         this.successMessage = response.message;
         this.router.navigate(['/rooms']);
       if (this.router) {

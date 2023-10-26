@@ -24,7 +24,9 @@ throw new Error('Method not implemented.');
   register() {
     this.userService.register(this.user).subscribe(
       (response: any) => {
+        this.userService.setCurrentUser(response.user);
         console.log('Registration successful', response);
+        console.log(response);
         this.successMessage = response.message;
         this.router.navigate(['/login']);
       if (this.router) {
