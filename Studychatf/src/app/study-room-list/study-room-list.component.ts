@@ -50,7 +50,7 @@ studyRooms: any;
     this.studyRoomService.createRoom(this.newRoom).subscribe(
       (room: unknown) => {
         this.rooms.push(room as StudyRoom);
-        this.newRoom = { name: '', subject: '' }; // Reset form
+        this.newRoom = { name: '', subject: '' }; 
       },
       error => {
         console.error('Failed to create room', error);
@@ -61,10 +61,10 @@ studyRooms: any;
   
 
 joinRoom(roomId: number) {
-    // Get the current user's data
+    
     const currentUser = this.userService.getCurrentUser();
 
-    // Check if the user data is available
+    
     if (!currentUser || !currentUser.username) {
         console.error('User information is not available');
         return;
