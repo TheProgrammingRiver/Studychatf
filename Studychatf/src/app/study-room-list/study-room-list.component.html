@@ -1,0 +1,15 @@
+<div>
+  <h2>Create Room</h2>
+  <input [(ngModel)]="newRoom.name" placeholder="Name">
+  <input [(ngModel)]="newRoom.subject" placeholder="Subject">
+  <button (click)="createRoom()">Create</button>
+</div>
+
+
+<h2>Available Rooms</h2>
+<ul>
+  <li *ngFor="let room of rooms">
+    {{ room.name }} ({{ room.subject }})
+    <button (click)="joinRoom(room.roomId)">Join</button>
+  </li>
+</ul>
