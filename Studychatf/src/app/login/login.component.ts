@@ -9,9 +9,20 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   successMessage: any;
-onLogin() {
-throw new Error('Method not implemented.');
+  errorMessage!: string;
+  onLogin() {
+    this.userService.login(this.user).subscribe(
+        response => {
+            this.userService.onLoginSuccess(response);
+            // Navigate to the rooms page after setting the current user.
+            this.router.navigate(['/rooms']);
+        },
+        error => {
+            this.errorMessage = 'Invalid username or password';
+        }
+    );
 }
+
 
   credentials = {
     username: '',
@@ -27,6 +38,7 @@ user: any;
         this.userService.setCurrentUser(response.user);
         console.log('Login successful', response);
         console.log(response);
+        this.userService.onLoginSuccess(response);
         this.successMessage = response.message;
         this.router.navigate(['/rooms']);
       if (this.router) {
@@ -38,4 +50,5 @@ user: any;
       }
     );
   }
+  
 }
