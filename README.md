@@ -22,7 +22,10 @@ To run StudyChat on your local machine:
 
 ## Planning and Documentation
 
- pending
+-**Frontend Development:**
+Design and develop the registration and login pages.
+Create the main dashboard to display available study rooms.
+Implement the chat interface for the study rooms.
 
  [GitHub Project](<Link>).
 
