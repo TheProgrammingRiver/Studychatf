@@ -1,4 +1,4 @@
-# StudyChat - Collaborative Study Rooms
+# StudyChat
 
 StudyChat is an intuitive platform that allows users to create, join, and collaborate in study rooms. Within these rooms, participants can chat and discuss academic topics, making learning more interactive and social.
 
@@ -29,7 +29,7 @@ Implement the chat interface for the study rooms.
 
 ## Backend Repository
 
-The backend API for StudyChat can be found [here](<[Link](https://github.com/TheProgrammingRiver/StudyChat/tree/main)>).
+The backend API for StudyChat can be found [here](<(https://github.com/TheProgrammingRiver/StudyChat/tree/main)>).
 
 ## Approach
 
