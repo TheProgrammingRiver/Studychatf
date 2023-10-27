@@ -105,7 +105,7 @@ export class ChatRoomComponent implements OnInit {
   console.log('Fetched Current User:', this.currentUser);
     
   interval(5000).pipe(
-    startWith(0), // to immediately get the messages without waiting for the first interval
+    startWith(0), 
     switchMap(() => this.chatMessageService.getMessagesForRoom(this.roomId))
 ).subscribe(
     messages => {
