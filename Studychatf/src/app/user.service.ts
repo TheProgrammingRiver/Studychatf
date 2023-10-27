@@ -26,6 +26,9 @@ constructor(private http: HttpClient) { }
     return this.currentUser;
   }
 
+  setCurrentUser(user: any) {
+    this.currentUser = user;
+  }
   // onLoginSuccess(response: any) {
   //   this.setCurrentUser(response.user);
   //   this.currentUser = response.user;
@@ -57,11 +60,5 @@ constructor(private http: HttpClient) { }
 
   listRoomsForUser(userId: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${userId}/rooms`);
-  }
-
-  setCurrentUser(user: any) {
-    this['currentUserData'] = user;
-    this.currentUser = user;
-    // console.log('setCurrentUser called with:', user);
   }
 }

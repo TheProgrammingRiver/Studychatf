@@ -42,9 +42,11 @@ export class StudyRoomService {
     return this.http.post(`${this.baseUrl}/${roomId}/join`, user);
   }
 
+  
+
   leaveRoom(roomId: number, user: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/${roomId}/leave`, user);
   }
 
-  
+
 }

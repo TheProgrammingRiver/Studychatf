@@ -12,6 +12,8 @@ const routes: Routes = [
   { path: 'study-room-list', component: StudyRoomListComponent },
   { path: 'chat-room', component: ChatRoomComponent },
   { path: 'rooms', component: StudyRoomListComponent },
+  { path: 'chat-room/:roomId', component: ChatRoomComponent },
+
   { path: '**', redirectTo: '/login' },
 
 ];

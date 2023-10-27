@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ChatMessageService {
+  [x: string]: any;
 
   private baseUrl = 'http://localhost:8080/studyroom';
 

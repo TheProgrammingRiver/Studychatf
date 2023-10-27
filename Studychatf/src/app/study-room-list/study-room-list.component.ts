@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudyRoomService } from '../studyroom.service';
 import { StudyRoom } from '../models/study-room.model';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 
 
@@ -22,12 +23,13 @@ export class StudyRoomListComponent implements OnInit {
   errorMessage: any;
   studyRooms: any;
   successMessage: any;
-  router: any;
+  // router: any;
 
 
   constructor(
     private studyRoomService: StudyRoomService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
     ) {
       this.currentUser = this.userService.getCurrentUser();
      }
@@ -63,23 +65,45 @@ export class StudyRoomListComponent implements OnInit {
 
   
 
-joinRoom(roomId: number) {
+// joinRoom(roomId: number) {
     
-    const currentUser = this.userService.getCurrentUser();
-    console.log(currentUser);
-    if (!currentUser || !currentUser.username) {
-        console.error('User information is not available');
-        return;
-    }
+//     const currentUser = this.userService.getCurrentUser();
+//     console.log(currentUser);
+//     if (!currentUser || !currentUser.username) {
+//         console.error('User information is not available');
+//         return;
+//     }
 
-    this.studyRoomService.joinRoom(roomId, currentUser).subscribe(
-        response => {
-            console.log('Joined room successfully', response);
-        },
-        error => {
-            console.error('Failed to join room', error);
-        }
-    );
+//     this.studyRoomService.joinRoom(roomId, currentUser).subscribe(
+//         response => {
+//             console.log('Joined room successfully', response);
+//         },
+//         error => {
+//             console.error('Failed to join room', error);
+//         }
+//     );
+// }
+
+joinRoom(roomId: number) {
+  const currentUser = this.userService.getCurrentUser();
+  
+  if (!currentUser || !currentUser.username) {
+      console.error('User information is not available');
+      return;
+  }
+
+  this.studyRoomService.joinRoom(roomId, currentUser).subscribe(
+      response => {
+          console.log('Joined room successfully', response);
+          
+          // Navigate to the chat room view after successfully joining.
+          this.router.navigate(['/chat-room', roomId]);
+      },
+      error => {
+          console.error('Failed to join room', error);
+      }
+  );
 }
+
 
 }
