@@ -58,6 +58,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ChatMessageService } from '../chat.message.service';
 import { UserService } from '../user.service';
+import { interval } from 'rxjs';
+import { startWith, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-chat-room',
@@ -101,6 +103,18 @@ export class ChatRoomComponent implements OnInit {
 
   this.currentUser = this.userService.getCurrentUser();
   console.log('Fetched Current User:', this.currentUser);
+    
+  interval(5000).pipe(
+    startWith(0), // to immediately get the messages without waiting for the first interval
+    switchMap(() => this.chatMessageService.getMessagesForRoom(this.roomId))
+).subscribe(
+    messages => {
+        this.messages = messages;
+    },
+    error => {
+        console.error('Failed to fetch messages', error);
+    }
+);
   }
 
   
