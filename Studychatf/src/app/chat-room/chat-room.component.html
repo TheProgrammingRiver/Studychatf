@@ -2,9 +2,9 @@
   <h2>Chat Room: {{ roomId }}</h2>
 
   <div class="messages">
-    <div *ngFor="let message of messages">
-      <strong>{{ message?.sender?.username }}</strong>: {{ message?.content }}
-    </div>
+      <div *ngFor="let message of messages">
+          <strong>{{ message?.sender?.username }}</strong>: {{ message?.content }}
+      </div>
   </div>
 
   <div class="input-box">
