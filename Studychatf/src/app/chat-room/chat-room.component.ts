@@ -2,7 +2,6 @@
 // import { ActivatedRoute } from '@angular/router';
 // import { ChatMessageService } from '../chat.message.service';
 // import { ChatMessage } from '../models/chat-message.model';
-
 // @Component({
 //   selector: 'app-chat-room',
 //   templateUrl: './chat-room.component.html',
@@ -13,20 +12,16 @@
 //     text: '',
 //     timestamp: '',
 //   };
-
 //   messages: ChatMessage[] = [];
 //   errorMessage: any;
-
 //   constructor(
 //     private chatMessageService: ChatMessageService,
 //     private route: ActivatedRoute
 //   ) {}
-
 //   ngOnInit() {
 //     const roomId = this.route.snapshot.params['roomId'];
 //     this.getMessagesForRoom(roomId);
 //   }
-
 //   getMessagesForRoom(roomId: number) {
 //     this.chatMessageService.getMessagesForRoom(roomId).subscribe(
 //       (messages) => {
@@ -37,7 +32,6 @@
 //       }
 //     );
 //   }
-
 //   sendMessage() {
 //     const roomId = this.route.snapshot.params['roomId'];
 //     this.chatMessageService.sendMessage(roomId, this.newMessage).subscribe(
@@ -51,9 +45,6 @@
 //     );
 //   }
 // }
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ChatMessageService } from '../chat.message.service';
@@ -67,12 +58,10 @@ import { startWith, switchMap } from 'rxjs/operators';
   styleUrls: ['./chat-room.component.css']
 })
 export class ChatRoomComponent implements OnInit {
-
   roomId: number = 0;
   messages: any[] = [];
   newMessage: string = '';
   currentUser: any;
-
   constructor(
     private chatMessageService: ChatMessageService,
     private userService: UserService,
@@ -83,15 +72,11 @@ export class ChatRoomComponent implements OnInit {
       this.loadMessages();
     });
   }
-
   // ngOnInit(): void {
   //   this.currentUser = this.userService.getCurrentUser();
   // }
-
-
   ngOnInit() {
     this.roomId = +this.route.snapshot.params['roomId'];
-
     this.chatMessageService.getMessagesForRoom(this.roomId).subscribe(
       messages => {
         this.messages = messages;
@@ -103,9 +88,9 @@ export class ChatRoomComponent implements OnInit {
 
   this.currentUser = this.userService.getCurrentUser();
   console.log('Fetched Current User:', this.currentUser);
-    
+
   interval(5000).pipe(
-    startWith(0), 
+    startWith(0), // to immediately get the messages without waiting for the first interval
     switchMap(() => this.chatMessageService.getMessagesForRoom(this.roomId))
 ).subscribe(
     messages => {
@@ -117,7 +102,7 @@ export class ChatRoomComponent implements OnInit {
 );
   }
 
-  
+
     
   loadMessages() {
     this.chatMessageService.getMessagesForRoom(this.roomId).subscribe(
@@ -128,7 +113,6 @@ export class ChatRoomComponent implements OnInit {
   }
   
   
-
   sendMessage() {
     if(this.currentUser?.username) {
         const messageData = {
@@ -147,5 +131,4 @@ export class ChatRoomComponent implements OnInit {
         );
     }
 }
-
 }

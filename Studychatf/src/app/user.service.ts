@@ -27,6 +27,7 @@ constructor(private http: HttpClient) { }
   }
 
   setCurrentUser(user: any) {
+    // this['currentUserData'] = user;
     this.currentUser = user;
   }
   // onLoginSuccess(response: any) {

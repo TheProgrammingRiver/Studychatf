@@ -86,12 +86,11 @@ export class StudyRoomListComponent implements OnInit {
 
 joinRoom(roomId: number) {
   const currentUser = this.userService.getCurrentUser();
-  
+  console.log(currentUser);
   if (!currentUser || !currentUser.username) {
       console.error('User information is not available');
       return;
   }
-
   this.studyRoomService.joinRoom(roomId, currentUser).subscribe(
       response => {
           console.log('Joined room successfully', response);
