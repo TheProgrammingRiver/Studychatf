@@ -29,7 +29,7 @@ Implement the chat interface for the study rooms.
 
 ## Backend Repository
 
-The backend API for StudyChat can be found [here](<(https://github.com/TheProgrammingRiver/StudyChat/tree/main)>).
+The backend API for StudyChat can be found [here](https://github.com/TheProgrammingRiver/StudyChat/tree/main).
 
 ## Approach
 
