@@ -17,25 +17,13 @@ export class UserService {
 
 constructor(private http: HttpClient) { }
 
-  // setCurrentUser(user: any) {
-  //   this['currentUserData'] = user;
-  //   this.currentUser = user;
-  // }
-
   getCurrentUser() {
     return this.currentUser;
   }
 
   setCurrentUser(user: any) {
-    // this['currentUserData'] = user;
     this.currentUser = user;
   }
-  // onLoginSuccess(response: any) {
-  //   this.setCurrentUser(response.user);
-  //   this.currentUser = response.user;
-  // }
-  
-
 
   register(user: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, user);
@@ -47,8 +35,6 @@ constructor(private http: HttpClient) { }
   onLoginSuccess(response: any) {
     this.currentUser = (response.data);
     console.log('onLoginSuccess called with:', response);
-    // this.setCurrentUser(response.user);
-    // this.currentUser = response.user;
   }
 
   getUserDetails(userId: number): Observable<any> {

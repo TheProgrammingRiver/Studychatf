@@ -23,7 +23,7 @@ export class StudyRoomListComponent implements OnInit {
   errorMessage: any;
   studyRooms: any;
   successMessage: any;
-  // router: any;
+
 
 
   constructor(
@@ -63,26 +63,6 @@ export class StudyRoomListComponent implements OnInit {
     );
   }
 
-  
-
-// joinRoom(roomId: number) {
-    
-//     const currentUser = this.userService.getCurrentUser();
-//     console.log(currentUser);
-//     if (!currentUser || !currentUser.username) {
-//         console.error('User information is not available');
-//         return;
-//     }
-
-//     this.studyRoomService.joinRoom(roomId, currentUser).subscribe(
-//         response => {
-//             console.log('Joined room successfully', response);
-//         },
-//         error => {
-//             console.error('Failed to join room', error);
-//         }
-//     );
-// }
 
 joinRoom(roomId: number) {
   const currentUser = this.userService.getCurrentUser();
@@ -95,7 +75,6 @@ joinRoom(roomId: number) {
       response => {
           console.log('Joined room successfully', response);
           
-          // Navigate to the chat room view after successfully joining.
           this.router.navigate(['/chat-room', roomId]);
       },
       error => {
